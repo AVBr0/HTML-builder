@@ -10,3 +10,4 @@ stdin.on('data', data => {
 });
 
 process.on('exit', () => console.log('Bye! Happy to see \'u again!'));
+process.on('SIGINT', () => process.exit());
