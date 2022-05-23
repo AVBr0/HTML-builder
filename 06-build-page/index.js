@@ -14,7 +14,7 @@ let cssBundle = [];
 
 //-----------HTML-Page-Building-----------
 const createNewPage = async () => {
-  let index = await readFile(currentHTML_folderPath, 'utf-8');
+  let pageContent = await readFile(currentHTML_folderPath, 'utf-8');
 
   try {
     const elements = await readdir(componentsPath, { withFileTypes: true });
@@ -24,9 +24,9 @@ const createNewPage = async () => {
       const fileExtension = path.extname(e.name).split('.')[1];
       const template = `{{${e.name.split('.')[0]}}}`;
 
-      if (index.includes(template) && fileExtension === 'html') {
-        index = index.replace(template, elementContent);
-        await writeFile((path.join(newHTML_folderPath, 'index.html')), index);
+      if (pageContent.includes(template) && fileExtension === 'html') {
+        pageContent = pageContent.replace(template, elementContent);
+        await writeFile((path.join(newHTML_folderPath, 'index.html')), pageContent);
       }
     });
   } catch (error) {
