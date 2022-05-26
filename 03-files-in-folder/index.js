@@ -14,7 +14,7 @@ const filesInFolder = async () => {
         const fileName = f.name.split('.').slice(0, -1).join('.');
         const fileExtension = path.extname(f.name).split('.')[1];
         const fileSize = (fileStat.size)/1024;
-        console.log(`${fileName} - ${fileExtension} - ${fileSize} kb`);
+        console.log(`${fileExtension !== undefined ? fileName : f.name} - ${fileExtension !== undefined ? fileExtension : 'none'} - ${fileSize} kb`);
       }
     });
   } catch (err) {
